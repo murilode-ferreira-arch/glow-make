@@ -12,5 +12,5 @@ app.use(express.json());
 app.use('/produtos', produtoRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Servidor GlowMake rodando na porta ${PORT}`);
+  console.log(`Servidor GlowMake rodande em http://localhost:${PORT}`);
 });
