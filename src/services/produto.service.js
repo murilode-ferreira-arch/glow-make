@@ -1,24 +1,18 @@
-import pool from '../config/db.js';
+import pool from './db.js';
 
-class ProdutoService {
- 
-  async create({ nome, marca, categoria, preco, quantidade_estoque }) {
-    const query = `
-      INSERT INTO produtos (nome, marca, categoria, preco, quantidade_estoque)
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *;
-    `;
-    const values = [nome, marca, categoria, preco, quantidade_estoque];
-    
-    const { rows } = await pool.query(query, values);
-    return rows[0]; 
+class ItemService {
+  async create(dados) {
+    const { rows } = await pool.query(
+      'INSERT INTO produtos (nome, marca, categoria, preco, quantidade_estoque) VALUES ($1, $2, $3, $4, $5) RETURNING *;',
+      [dados.nome, dados.marca, dados.categoria, dados.preco, dados.quantidade_estoque]
+    );
+    return rows[0];
   }
 
-  async getall() {
-    const query = 'select * from produtos;';
-    const { rows } = await pool.query(query);
-    return rows; 
+  async getAll() {
+    const { rows } = await pool.query('SELECT * FROM produtos;');
+    return rows;
   }
 }
 
-export default new ProdutoService();
+export default new ItemService();
