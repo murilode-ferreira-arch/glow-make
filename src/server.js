@@ -1,6 +1,5 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import produtoRoutes from './routes/produto.routes.js';
+import pr
 
 dotenv.config();
 
