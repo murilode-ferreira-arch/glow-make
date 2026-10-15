@@ -1,5 +1,5 @@
 import express from 'express';
-import itemRoutes from './routes.js';
+import itemRoutes from './routes/produto.routes.js';
 
 const app = express();
 app.use(express.json());
