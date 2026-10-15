@@ -1,16 +1,16 @@
 import { Router } from 'express';
-import ItemService from '../services/produto.service.js';
+import produtoService from '../services/produto.service.js';
 
 const router = Router();
 
 router.post('/', async (req, res) => {
-  const item = await ItemService.create(req.body);
-  return res.status(201).json(item);
+  const produtos = await produtoService.create(req.body);
+  return res.status(201).json(produtos);
 });
 
 router.get('/', async (req, res) => {
-  const itens = await ItemService.getAll();
-  return res.status(200).json(itens);
+  const produtos = await produtoService.getAll();
+  return res.status(200).json(produtos);
 });
 
 export default router;
